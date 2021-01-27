@@ -119,6 +119,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "kata-http-rxjs"
+    }
+  },
+  "defaultProject": "kata-http-rxjs",
+  "cli": {
+    "analytics": false
+  }
 }
