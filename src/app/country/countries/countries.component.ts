@@ -1,4 +1,7 @@
+import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
+import { Country } from '../country';
+import { CountryService } from '../country.service';
 
 @Component({
   selector: 'app-countries',
@@ -7,9 +10,21 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CountriesComponent implements OnInit {
 
-  constructor() { }
+  countries: Country[];
+  name:string;
+
+  constructor(public http: HttpClient, private apiService: CountryService){}
 
   ngOnInit(): void {
+  }
+
+  searchCapital() {
+    this.apiService
+    .searchCountryByName(this.name)
+    .subscribe((data:Country[]) => {
+      console.log(data);
+      this.countries = data;
+    });
   }
 
 }
